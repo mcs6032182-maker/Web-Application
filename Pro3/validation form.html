@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registration Form</title>
+
+    <style>
+        body {
+            background-color: #dff9fb;
+            font-family: Arial;
+        }
+
+        .form {
+            width: 400px;
+            margin: 60px auto;
+            padding: 25px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px gray;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0 15px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #27ae60;
+            color: white;
+            border: none;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #219150;
+        }
+
+        #result {
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="form">
+
+    <h1>Registration</h1>
+
+    <form onsubmit="return validate()">
+
+        <label>Email</label>
+        <input type="text" id="email" placeholder="Enter email">
+
+        <label>Password</label>
+        <input type="password" id="password"
+               placeholder="Enter password">
+
+        <label>Confirm Password</label>
+        <input type="password" id="confirm"
+               placeholder="Confirm password">
+
+        <button type="submit">Register</button>
+
+        <p id="result"></p>
+
+    </form>
+
+</div>
+
+<script>
+
+function validate() {
+
+    var email = document.getElementById("email").value;
+    var password = document.getElementById("password").value;
+    var confirm = document.getElementById("confirm").value;
+    var result = document.getElementById("result");
+
+    // Check email
+    if (email == "") {
+        result.style.color = "red";
+        result.innerHTML = "Email cannot be empty.";
+        return false;
+    }
+
+    if (!email.includes("@") || !email.includes(".")) {
+        result.style.color = "red";
+        result.innerHTML = "Enter a valid email.";
+        return false;
+    }
+
+    // Check password
+    if (password == "") {
+        result.style.color = "red";
+        result.innerHTML = "Password cannot be empty.";
+        return false;
+    }
+
+    if (password.length < 6) {
+        result.style.color = "red";
+        result.innerHTML =
+            "Password must have at least 6 characters.";
+        return false;
+    }
+
+    // Check confirm password
+    if (confirm == "") {
+        result.style.color = "red";
+        result.innerHTML = "Please confirm your password.";
+        return false;
+    }
+
+    if (password != confirm) {
+        result.style.color = "red";
+        result.innerHTML = "Passwords do not match.";
+        return false;
+    }
+
+    // Success
+    result.style.color = "green";
+    result.innerHTML = "Registration successful!";
+
+    return false;
+}
+
+</script>
+
+</body>
+</html>

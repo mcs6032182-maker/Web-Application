@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Internal CSS</title>
+
+    <style>
+        body {
+            background-color: lightgray;
+            font-family: Arial;
+            text-align: center;
+        }
+
+        h1 {
+            color: blue;
+        }
+
+        p {
+            font-size: 20px;
+            color: green;
+        }
+
+        img {
+            width: 400px;
+        }
+
+        a {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>My Static Web Page</h1>
+
+    <p>
+        <b>Welcome!</b> This is a static webpage using
+        <i>Internal CSS</i>.
+    </p>
+
+    <img src="https://picsum.photos/400/250"
+         alt="Sample Image">
+
+    <p>
+        Visit
+        <a href="https://www.google.com">Google</a>
+    </p>
+
+</body>
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>React Library Management</title>
+
+    <!-- React Libraries -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #f59e0b, #ef4444);
+        }
+
+        .library {
+            width: 450px;
+            margin: 60px auto;
+            padding: 30px;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            text-align: center;
+            color: #d97706;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        .book {
+            padding: 15px;
+            margin: 15px 0;
+            background-color: #fff7ed;
+            border-left: 5px solid #f59e0b;
+            border-radius: 5px;
+        }
+
+        .book p {
+            margin: 7px 0;
+        }
+
+        button {
+            padding: 10px 18px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 6px;
+            background-color: #d97706;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #b45309;
+        }
+
+        .available {
+            color: green;
+            font-weight: bold;
+        }
+
+        .issued {
+            color: red;
+            font-weight: bold;
+        }
+
+        .message {
+            text-align: center;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div id="root"></div>
+
+<script type="text/babel">
+
+// Reusable Book Component
+function Book(props) {
+
+    // State
+    const [available, setAvailable] = React.useState(true);
+
+    // Event Handling
+    function issueBook() {
+        setAvailable(false);
+    }
+
+    function returnBook() {
+        setAvailable(true);
+    }
+
+    return (
+        <div className="book">
+
+            {/* Props */}
+            <h2>{props.title}</h2>
+
+            <p>
+                <b>Author:</b> {props.author}
+            </p>
+
+            <p>
+                <b>Category:</b> {props.category}
+            </p>
+
+            {/* State */}
+            <p className={available ? "available" : "issued"}>
+                Status: {available ? "Available" : "Issued"}
+            </p>
+
+            {/* Event Handling */}
+            {available ? (
+                <button onClick={issueBook}>
+                    Issue Book
+                </button>
+            ) : (
+                <button onClick={returnBook}>
+                    Return Book
+                </button>
+            )}
+
+        </div>
+    );
+}
+
+
+// Main Library Component
+function Library() {
+
+    return (
+        <div className="library">
+
+            <h1>📚 Library Management</h1>
+
+            <Book
+                title="The Alchemist"
+                author="Paulo Coelho"
+                category="Fiction"
+            />
+
+            <Book
+                title="Introduction to JavaScript"
+                author="John Smith"
+                category="Programming"
+            />
+
+            <Book
+                title="Web Development Basics"
+                author="David Brown"
+                category="Technology"
+            />
+
+            <p className="message">
+                Click the button to issue or return a book.
+            </p>
+
+        </div>
+    );
+}
+
+
+// App Component
+function App() {
+    return <Library />;
+}
+
+
+// Render React Application
+const root = ReactDOM.createRoot(
+    document.getElementById("root")
+);
+
+root.render(<App />);
+
+</script>
+
+</body>
+</html>

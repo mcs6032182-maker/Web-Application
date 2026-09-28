@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Static Web Page</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #0066cc;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        main {
+            width: 80%;
+            margin: 25px auto;
+            background-color: white;
+            padding: 25px;
+            border-radius: 10px;
+        }
+
+        img {
+            width: 400px;
+            display: block;
+            margin: 20px auto;
+            border-radius: 10px;
+        }
+
+        a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            text-align: center;
+            background-color: #333;
+            color: white;
+            padding: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Welcome to My Web Page</h1>
+        <p><i>A simple static HTML website</i></p>
+    </header>
+
+    <main>
+
+        <h2>About This Page</h2>
+
+        <p>
+            This is a <b>static web page</b> created using
+            <strong>HTML</strong> and CSS.
+        </p>
+
+        <p>
+            HTML is used to <em>structure</em> web pages.
+            We can also use <u>text formatting</u> to make
+            important information stand out.
+        </p>
+
+        <h2>Image</h2>
+
+        <img src="https://picsum.photos/400/250"
+             alt="Sample landscape image">
+
+        <h2>Useful Links</h2>
+
+        <p>
+            Visit the following websites:
+        </p>
+
+        <ul>
+            <li>
+                <a href="https://www.google.com" target="_blank">
+                    Google
+                </a>
+            </li>
+
+            <li>
+                <a href="https://www.wikipedia.org" target="_blank">
+                    Wikipedia
+                </a>
+            </li>
+
+            <li>
+                <a href="https://www.w3.org" target="_blank">
+                    W3C
+                </a>
+            </li>
+        </ul>
+
+        <p>
+            <mark>This text is highlighted.</mark>
+            You can also use <del>deleted text</del> and
+            <small>small text</small>.
+        </p>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 My Static Web Page</p>
+    </footer>
+
+</body>
+</html>

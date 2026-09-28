@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>React Temperature Converter</title>
+
+    <!-- React Libraries -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e0f7fa;
+            text-align: center;
+            padding: 50px;
+        }
+
+        .box {
+            width: 400px;
+            margin: auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px gray;
+        }
+
+        h1 {
+            color: #00838f;
+        }
+
+        input {
+            width: 90%;
+            padding: 12px;
+            margin: 15px;
+            font-size: 18px;
+        }
+
+        button {
+            padding: 12px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 6px;
+            background-color: #00838f;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #006064;
+        }
+
+        .result {
+            font-size: 25px;
+            font-weight: bold;
+            color: #00838f;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        // Temperature Component
+        function Temperature(props) {
+
+            // State
+            const [temperature, setTemperature] = React.useState("");
+
+            const [result, setResult] = React.useState("");
+
+            // Event Handling
+            function handleChange(event) {
+                setTemperature(event.target.value);
+            }
+
+            function convertToCelsius() {
+
+                if (temperature === "") {
+                    setResult("Please enter a temperature");
+                    return;
+                }
+
+                let celsius = (temperature - 32) * 5 / 9;
+
+                setResult(
+                    celsius.toFixed(2) + " °C"
+                );
+            }
+
+            function convertToFahrenheit() {
+
+                if (temperature === "") {
+                    setResult("Please enter a temperature");
+                    return;
+                }
+
+                let fahrenheit = (temperature * 9 / 5) + 32;
+
+                setResult(
+                    fahrenheit.toFixed(2) + " °F"
+                );
+            }
+
+            function reset() {
+                setTemperature("");
+                setResult("");
+            }
+
+            return (
+                <div className="box">
+
+                    <h1>{props.title}</h1>
+
+                    <p>
+                        Enter Temperature
+                    </p>
+
+                    {/* State and Event */}
+                    <input
+                        type="number"
+                        value={temperature}
+                        onChange={handleChange}
+                        placeholder="Enter temperature"
+                    />
+
+                    <br />
+
+                    {/* Event Handling */}
+                    <button onClick={convertToCelsius}>
+                        To Celsius
+                    </button>
+
+                    <button onClick={convertToFahrenheit}>
+                        To Fahrenheit
+                    </button>
+
+                    <button onClick={reset}>
+                        Reset
+                    </button>
+
+                    <p className="result">
+                        {result}
+                    </p>
+
+                </div>
+            );
+        }
+
+
+        // App Component
+        function App() {
+
+            return (
+                <Temperature
+                    title="Temperature Converter"
+                />
+            );
+        }
+
+
+        // Render React Application
+        const root = ReactDOM.createRoot(
+            document.getElementById("root")
+        );
+
+        root.render(<App />);
+
+    </script>
+
+</body>
+
+</html>

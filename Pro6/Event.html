@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>React Student Marks</title>
+
+    <!-- React Libraries -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e8f5e9;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .card {
+            background-color: white;
+            width: 400px;
+            margin: auto;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px gray;
+        }
+
+        h1 {
+            color: #2e7d32;
+        }
+
+        h2 {
+            color: #444;
+        }
+
+        p {
+            font-size: 18px;
+        }
+
+        .marks {
+            font-size: 35px;
+            font-weight: bold;
+            color: #2e7d32;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 6px;
+            background-color: #2e7d32;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #1b5e20;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        // Function Component
+        function Student(props) {
+
+            // State
+            const [marks, setMarks] = React.useState(50);
+
+            // Event Handling
+            function increaseMarks() {
+                setMarks(marks + 5);
+            }
+
+            function decreaseMarks() {
+                setMarks(marks - 5);
+            }
+
+            function resetMarks() {
+                setMarks(50);
+            }
+
+            return (
+                <div className="card">
+
+                    <h2>Student Details</h2>
+
+                    {/* Props */}
+                    <p>
+                        <b>Name:</b> {props.name}
+                    </p>
+
+                    <p>
+                        <b>Course:</b> {props.course}
+                    </p>
+
+                    <p>
+                        <b>College:</b> {props.college}
+                    </p>
+
+                    <hr />
+
+                    <h2>Student Marks</h2>
+
+                    {/* State */}
+                    <p className="marks">
+                        {marks}
+                    </p>
+
+                    {/* Event Handling */}
+                    <button onClick={increaseMarks}>
+                        Increase
+                    </button>
+
+                    <button onClick={decreaseMarks}>
+                        Decrease
+                    </button>
+
+                    <button onClick={resetMarks}>
+                        Reset
+                    </button>
+
+                </div>
+            );
+        }
+
+        // App Component
+        function App() {
+
+            return (
+                <div>
+
+                    <h1>Student Marks Application</h1>
+
+                    {/* Props */}
+                    <Student
+                        name="pavi"
+                        course="MSC"
+                        college="ABC College"
+                    />
+
+                </div>
+            );
+        }
+
+        // Render React App
+        const root = ReactDOM.createRoot(
+            document.getElementById("root")
+        );
+
+        root.render(<App />);
+
+    </script>
+
+</body>
+
+</html>

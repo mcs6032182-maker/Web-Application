@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>React Attendance Application</title>
+
+    <!-- React Libraries -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff3e0;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .card {
+            background-color: white;
+            width: 420px;
+            margin: auto;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px gray;
+        }
+
+        h1 {
+            color: #e65100;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        p {
+            font-size: 18px;
+        }
+
+        .attendance {
+            font-size: 40px;
+            font-weight: bold;
+            color: #e65100;
+        }
+
+        button {
+            padding: 10px 18px;
+            margin: 5px;
+            border: none;
+            border-radius: 6px;
+            background-color: #e65100;
+            color: white;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        button:hover {
+            background-color: #bf360c;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        // Student Component
+        function Student(props) {
+
+            // State
+            const [attendance, setAttendance] = React.useState(75);
+
+            // Event Handling
+            function increaseAttendance() {
+                if (attendance < 100) {
+                    setAttendance(attendance + 5);
+                }
+            }
+
+            function decreaseAttendance() {
+                if (attendance > 0) {
+                    setAttendance(attendance - 5);
+                }
+            }
+
+            function resetAttendance() {
+                setAttendance(75);
+            }
+
+            return (
+                <div className="card">
+
+                    <h2>Student Details</h2>
+
+                    {/* Props */}
+                    <p>
+                        <b>Name:</b> {props.name}
+                    </p>
+
+                    <p>
+                        <b>Department:</b> {props.department}
+                    </p>
+
+                    <p>
+                        <b>Year:</b> {props.year}
+                    </p>
+
+                    <hr />
+
+                    <h2>Attendance</h2>
+
+                    {/* State */}
+                    <p className="attendance">
+                        {attendance}%
+                    </p>
+
+                    {/* Event Handling */}
+                    <button onClick={increaseAttendance}>
+                        Increase
+                    </button>
+
+                    <button onClick={decreaseAttendance}>
+                        Decrease
+                    </button>
+
+                    <button onClick={resetAttendance}>
+                        Reset
+                    </button>
+
+                    <p>
+                        {attendance >= 75
+                            ? "Attendance is sufficient"
+                            : "Attendance is low"}
+                    </p>
+
+                </div>
+            );
+        }
+
+        // App Component
+        function App() {
+
+            return (
+                <div>
+
+                    <h1>Student Attendance</h1>
+
+                    <Student
+                        name="pavithra "
+                        department="Information Technology"
+                        year="2nd Year"
+                    />
+
+                </div>
+            );
+        }
+
+        // Render React Application
+        const root = ReactDOM.createRoot(
+            document.getElementById("root")
+        );
+
+        root.render(<App />);
+
+    </script>
+
+</body>
+
+</html>

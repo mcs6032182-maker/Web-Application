@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Email and Password Validation</title>
+
+    <style>
+        body {
+            background-color: #e6f2ff;
+            font-family: Arial, sans-serif;
+        }
+
+        .box {
+            width: 350px;
+            margin: 100px auto;
+            padding: 25px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px gray;
+        }
+
+        h2 {
+            text-align: center;
+            color: #0066cc;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0 15px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #0066cc;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #004c99;
+        }
+
+        #message {
+            text-align: center;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="box">
+
+    <h2>Login Form</h2>
+
+    <form onsubmit="return validateForm()">
+
+        <label>Email:</label>
+        <input type="text" id="email" placeholder="Enter your email">
+
+        <label>Password:</label>
+        <input type="password" id="password" placeholder="Enter your password">
+
+        <button type="submit">Login</button>
+
+        <p id="message"></p>
+
+    </form>
+
+</div>
+
+<script>
+
+function validateForm() {
+
+    var email = document.getElementById("email").value;
+    var password = document.getElementById("password").value;
+    var message = document.getElementById("message");
+
+    // Email validation
+    var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (email == "") {
+        message.style.color = "red";
+        message.innerHTML = "Please enter your email.";
+        return false;
+    }
+
+    if (!emailPattern.test(email)) {
+        message.style.color = "red";
+        message.innerHTML = "Please enter a valid email.";
+        return false;
+    }
+
+    // Password validation
+    if (password == "") {
+        message.style.color = "red";
+        message.innerHTML = "Please enter your password.";
+        return false;
+    }
+
+    if (password.length < 8) {
+        message.style.color = "red";
+        message.innerHTML =
+            "Password must contain at least 8 characters.";
+        return false;
+    }
+
+    message.style.color = "green";
+    message.innerHTML = "Login successful!";
+
+    return false;
+}
+
+</script>
+
+</body>
+</html>
